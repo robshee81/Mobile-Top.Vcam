@@ -139,11 +139,11 @@ fun HomeScreen() {
                 context = context
             )
         }
-        val annotatedString = AnnotatedString.Builder("本软件免费，点击前往软件下载页").apply {
+        val annotatedString = AnnotatedString.Builder("更多功能制作中...").apply {
             // 添加点击事件的范围
             addStringAnnotation(
                 tag = "URL",
-                annotation = "https://github.com/iiheng/VCAMSX/releases",
+                annotation = "None",
                 start = 0,
                 end = 12
             )
