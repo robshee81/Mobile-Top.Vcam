@@ -21,41 +21,41 @@ import com.wangyiheng.vcamsx.MainActivity
 fun DisclaimerDialog() {
     var showDialog by remember { mutableStateOf(true) }
     val context = LocalContext.current
-    val shengm = "免责声明\n" +
-            "关于本应用\n" +
-            "   本应用（以下简称“应用”）旨在提供替换摄像头数据的功能。用户可以通过本应用改变和调整通过摄像头捕捉的数据和图像。\n" +
+    val shengm = "Disclaimer\n" +
+            "About this application\n" +
+            "   This application (hereinafter referred to as the "application") aims to provide the function of replacing camera data. Users can change and adjust the data and images captured by the camera through this application. \n" +
             "\n" +
-            "使用条件\n" +
-            "   数据处理: 用户理解并同意，通过本应用处理的所有数据和图像可能包括但不限于用户上传、修改、分享的内容。用户应对其提交给应用的数据和图像承担全部责任。\n" +
+            "Terms of use\n" +
+            "   Data processing: The user understands and agrees that all data and images processed through this application may include but are not limited to the content uploaded, modified and shared by the user. Users shall be fully responsible for the data and images they submit to the application. \n" +
             "\n" +
-            "合法用途: 用户同意仅将本应用用于合法目的，并承诺不会利用本应用进行任何非法或未经授权的活动。\n" +
+            "Legal use: The user agrees to use this application only for legal purposes and promises not to use this application for any illegal or unauthorised activities. \n" +
             "\n" +
-            "版权和知识产权: 用户保证拥有或合法授权使用通过本应用处理的所有数据和图像的所有相关权利，包括但不限于版权、商标权和专利权。\n" +
+            "Copyright and Intellectual Property Rights: Users guarantee to own or legally authorise the use of all relevant rights of all data and images processed through this application, including but not limited to copyright, trademark rights and patent rights. \n" +
             "\n" +
-            "隐私保护: 用户应尊重他人的隐私权，并承诺不会通过本应用收集、处理或分发他人的个人信息，除非已获得明确的授权。\n" +
+            "Privacy protection: Users shall respect the privacy rights of others and promise not to collect, process or distribute other people's personal information through this application unless express authorisation is obtained. \n" +
             "\n" +
-            "责任限制: 开发者不对用户使用本应用产生的任何直接或间接后果承担责任。用户应自行承担使用本应用可能导致的任何风险和后果。\n" +
+            "Limitation of liability: The developer shall not be liable for any direct or indirect consequences arising from the user's use of this application. Users shall bear any risks and consequences that may be caused by the use of this application. \n" +
             "\n" +
-            "免责声明：开发者在此声明不对以下事项承担任何责任：\n" +
-            "   1. 任何由用户不当使用本应用造成的损害或损失。\n" +
-            "   2. 任何第三方对本应用的使用或依赖。\n" +
-            "   3. 任何因使用或无法使用本应用而产生的间接、偶然、特殊、惩罚性或后果性损害。\n" +
-            "   4. 任何未经授权访问或使用本应用所导致的数据丢失。\n" +
+            "Disclaimer: The developer hereby declares that he is not responsible for the following matters: \n" +
+            "   1. Any damage or loss caused by the user's improper use of this application. \n" +
+            "   2. The use or reliance of any third party on this application. \n" +
+            "   3. Any indirect, incidental, special, punitive or consequential damage caused by the use or inability to use this application. \n" +
+            "   4. Any data loss caused by unauthorised access or use of this application. \n" +
             "\n" +
-            "本免责声明的任何修改将会在本应用或官方网站上更新，并且自公布之日起生效。用户继续使用本应用将视为接受修改后的免责声明。\n" +
+            "Any modification to this disclaimer will be updated on this application or official website and will take effect from the date of publication. Users who continue to use this application will be deemed to have accepted the revised disclaimer. \n" +
             "\n" +
-            "法律适用\n" +
-            "本免责声明的解释和适用应遵循相关法律法规。任何因本应用引起的争议应提交至有管辖权的法院。"
+            "Legal application\n" +
+            "The interpretation and application of this disclaimer shall comply with relevant laws and regulations. Any dispute arising from this application shall be submitted to a court with jurisdiction. "
 
     if (showDialog) {
         AlertDialog(
             onDismissRequest = {
             },
             title = {
-                Text(text = "免责声明")
+                Text(text = "Disclaimer")
             },
             text = {
-                // 如果免责声明文本较短，可以考虑使用 Column + Scrollable
+                // If the text of the disclaimer is short, you can consider using Column + Scrollable
                 Box(modifier = Modifier.heightIn(max = 300.dp)) {
                     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                         shengm.split("\n").forEach { line ->
@@ -70,7 +70,7 @@ fun DisclaimerDialog() {
                         showDialog = false
                     }
                 ) {
-                    Text("我同意")
+                    Text("I agree.")
                 }
             },
             dismissButton = {
@@ -79,7 +79,7 @@ fun DisclaimerDialog() {
                         closeApp(context)
                     }
                 ) {
-                    Text("我不同意")
+                    Text("I don't agree")
                 }
             },
             properties = DialogProperties(
@@ -91,9 +91,9 @@ fun DisclaimerDialog() {
 }
 
 private fun closeApp(context: Context) {
-    // 停止相关服务
-    // 例如：douyin.stop() 和 cloudPlatform.disableAutoRotate()
-    // 关闭所有活动
+    // Stop the relevant services
+    // Take for example：douyin.stop() 和 cloudPlatform.disableAutoRotate()
+    // Close all activities
     if (context is MainActivity) {
         context.finishAffinity()
     }
