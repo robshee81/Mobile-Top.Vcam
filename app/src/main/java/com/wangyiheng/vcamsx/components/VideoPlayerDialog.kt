@@ -19,11 +19,11 @@ fun VideoPlayerDialog(homeController: HomeController) {
             homeController.isVideoDisplay.value = false
         }) {
             Column(
-                modifier = Modifier.size(width = 300.dp, height = 400.dp), // 设置Dialog的大小
+                modifier = Modifier.size(width = 300.dp, height = 400.dp), // Set the size of Dialogue
                 verticalArrangement = Arrangement.Center
             ) {
                 AndroidView(
-                    modifier = Modifier.weight(1f), // 让视频播放器填充除按钮以外的空间
+                    modifier = Modifier.weight(1f), // Let the video player fill the space other than the buttons
                     factory = { ctx ->
                         SurfaceView(ctx).apply {
                             holder.addCallback(object : SurfaceHolder.Callback {
@@ -34,7 +34,7 @@ fun VideoPlayerDialog(homeController: HomeController) {
                                 }
 
                                 override fun surfaceDestroyed(holder: SurfaceHolder) {
-                                    // 这里释放播放器资源
+                                    // Release player resources here.
                                     homeController.release()
                                 }
                             })
