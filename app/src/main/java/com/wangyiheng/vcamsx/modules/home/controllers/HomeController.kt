@@ -65,7 +65,7 @@ class HomeController: ViewModel(),KoinComponent {
                     apiService.uploadIp(UploadIpRequest(ipAddress))
                 }
             } catch (e: Exception) {
-                Log.d("错误", "${e.message}")
+                Log.d("Wrong", "${e.message}")
             }
         }
     }
@@ -106,23 +106,23 @@ class HomeController: ViewModel(),KoinComponent {
         mediaPlayer = MediaPlayer().apply {
             try {
                 isLooping = true
-                setSurface(holder.surface) // 使用SurfaceHolder的surface
-                setDataSource(context, videoPathUri) // 设置数据源
-                prepareAsync() // 异步准备MediaPlayer
+                setSurface(holder.surface) // Surface using SurfaceHolder
+                setDataSource(context, videoPathUri) // Set up the data source
+                prepareAsync() // Asynchronous preparation of MediaPlayer
 
-                // 设置准备监听器
+                // Set up a ready-to-listener
                 setOnPreparedListener {
-                    start() // 准备完成后开始播放
+                    start() // Start playing when you are ready.
                 }
 
-                // 可选：设置错误监听器
+                // Optional: Set up an error listener
                 setOnErrorListener { mp, what, extra ->
-                    // 处理播放错误
+                    // Handle playback errors
                     true
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
-                // 处理设置数据源或其他操作时的异常
+                // Dealing with exceptions when setting data sources or other operations
             }
         }
     }
@@ -131,12 +131,12 @@ class HomeController: ViewModel(),KoinComponent {
     fun playRTMPStream(holder: SurfaceHolder, rtmpUrl: String) {
         ijkMediaPlayer = IjkMediaPlayer().apply {
             try {
-                // 硬件解码设置,0为软解，1为硬解
+                // Hardware decoding settings, 0 is soft solution, 1 is hard solution
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec", 0)
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-auto-rotate", 1)
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-handle-resolution-change", 1)
 
-                // 缓冲设置
+                // Buffer setting
                 setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "dns_cache_clear", 1)
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "start-on-prepared", 0)
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec_mpeg4", 1)
@@ -146,35 +146,35 @@ class HomeController: ViewModel(),KoinComponent {
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "packet-buffering", 1L)
                 setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "framedrop", 1L)
 
-                // 错误监听器
+                // Error monitor
                 setOnErrorListener { _, what, extra ->
                     Log.e("IjkMediaPlayer", "Error occurred. What: $what, Extra: $extra")
                     Toast.makeText(context, "直播接收失败$what", Toast.LENGTH_SHORT).show()
                     true
                 }
 
-                // 信息监听器
+                // Information monitor
                 setOnInfoListener { _, what, extra ->
                     Log.i("IjkMediaPlayer", "Info received. What: $what, Extra: $extra")
                     true
                 }
 
-                // 设置 RTMP 流的 URL
+                // Set the URL of RTMP stream
                 dataSource = rtmpUrl
 
-                // 设置视频输出的 SurfaceHolder
+                // Set the SurfaceHolder of video output
                 setDisplay(holder)
 
-                // 异步准备播放器
+                // Asynchronous preparation player
                 prepareAsync()
 
-                // 当播放器准备好后，开始播放
+                // When the player is ready, start playing.
                 setOnPreparedListener {
                     Toast.makeText(context, "直播接收成功，可以进行投屏", Toast.LENGTH_SHORT).show()
                     start()
                 }
             } catch (e: Exception) {
-                Log.d("vcamsx","播放报错$e")
+                Log.d("vcamsx","Play error $e")
             }
         }
     }
