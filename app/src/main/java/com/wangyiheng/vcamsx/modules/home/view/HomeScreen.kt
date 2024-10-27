@@ -66,7 +66,7 @@ fun HomeScreen() {
             TextField(
                 value = homeController.liveURL.value,
                 onValueChange = { homeController.liveURL.value = it },
-                label = { Text("RTMP链接：") }
+                label = { Text("RTMP Link：") }
             )
 
             Button(
@@ -75,7 +75,7 @@ fun HomeScreen() {
                     homeController.saveState()
                 }
             ) {
-                Text("保存RTMP链接")
+                Text("Save RTMP Link")
             }
             Button(
                 modifier = buttonModifier,
@@ -84,7 +84,7 @@ fun HomeScreen() {
 
                 }
             ) {
-                Text("选择视频")
+                Text("Select Video")
             }
 
             Button(
@@ -93,7 +93,7 @@ fun HomeScreen() {
                     homeController.isVideoDisplay.value = true
                 }
             ) {
-                Text("查看视频")
+                Text("View Video")
             }
 
             Button(
@@ -102,45 +102,45 @@ fun HomeScreen() {
                     homeController.isLiveStreamingDisplay.value = true
                 }
             ) {
-                Text("查看直播推流")
+                Text("View Live Push Stream")
             }
 
             SettingRow(
-                label = "视频开关",
+                label = "Video Switch",
                 checkedState = homeController.isVideoEnabled,
                 onCheckedChange = { homeController.saveState() },
                 context = context
             )
 
             SettingRow(
-                label = "直播推流开关",
+                label = "Live Streaming Switch",
                 checkedState = homeController.isLiveStreamingEnabled,
                 onCheckedChange = { homeController.saveState() },
                 context = context
             )
 
             SettingRow(
-                label = "音量开关",
+                label = "Volume Switch",
                 checkedState = homeController.isVolumeEnabled,
                 onCheckedChange = { homeController.saveState() },
                 context = context
             )
 
             SettingRow(
-                label = if (homeController.codecType.value) "硬解码" else "软解码",
+                label = if (homeController.codecType.value) "Hard Decoding" else "Soft Decoding",
                 checkedState = homeController.codecType,
                 onCheckedChange = {
                     if(homeController.isH264HardwareDecoderSupport()){
                         homeController.saveState()
                     }else{
                         homeController.codecType.value = false
-                        Toast.makeText(context, "不支持硬解码", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Hard Decoding is not Supported", Toast.LENGTH_SHORT).show()
                     }},
                 context = context
             )
         }
-        val annotatedString = AnnotatedString.Builder("更多功能制作中...").apply {
-            // 添加点击事件的范围
+        val annotatedString = AnnotatedString.Builder("More Features are in the works...").apply {
+            // Add Scope for click event
             addStringAnnotation(
                 tag = "URL",
                 annotation = "None",
@@ -155,7 +155,7 @@ fun HomeScreen() {
         ) { offset ->
             annotatedString.getStringAnnotations("URL", offset, offset)
                 .firstOrNull()?.let { annotation ->
-                    // 在这里处理点击事件，比如打开一个浏览器
+                    // Handle click event here，For example, open a browser
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(annotation.item))
                     context.startActivity(intent)
                 }
