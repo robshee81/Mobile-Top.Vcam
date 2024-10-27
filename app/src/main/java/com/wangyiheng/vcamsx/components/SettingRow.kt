@@ -29,7 +29,7 @@ fun SettingRow(
             onCheckedChange = {
                 checkedState.value = it
                 onCheckedChange(it)
-                Toast.makeText(context, if (it) "$label 打开" else "$label 关闭", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, if (it) "$label Open" else "$label Shut", Toast.LENGTH_SHORT).show()
             }
         )
     }
