@@ -7,8 +7,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun FlowRow(
     modifier: Modifier = Modifier,
-    horizontalGap: Int = 8, // 水平间距
-    verticalGap: Int = 8, // 垂直间距
+    horizontalGap: Int = 8, // Horizontal spacing
+    verticalGap: Int = 8, // Vertical spacing
     content: @Composable () -> Unit
 ) {
     Layout(
