@@ -1,7 +1,7 @@
 package com.wangyiheng.vcamsx.data.models
 
 data class UploadIpRequest(
-    val ip: String // 确保字段名与服务器期望的匹配
+    val ip: String // Make sure that the field name matches the server's expectations
 )
 
 data class UploadIpResponse(
