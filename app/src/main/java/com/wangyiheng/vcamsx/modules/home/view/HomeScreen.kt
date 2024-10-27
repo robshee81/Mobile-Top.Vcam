@@ -48,10 +48,10 @@ fun HomeScreen() {
                 selectVideoLauncher.launch("video/*")
             } else {
                 if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-                    // 在 Android 9 (Pie) 及以下版本，请求 READ_EXTERNAL_STORAGE 权限
+                    // 在 Android 9 (Pie) and below versions，ask READ_EXTERNAL_STORAGE Permissions
                     Toast.makeText(context, "请打开设置允许读取文件夹权限", Toast.LENGTH_SHORT).show()
                 } else {
-                    // 在 Android 10 及以上版本，直接访问视频文件，无需请求权限
+                    // 在 Android 10 and above，Direct access to video files，No need to request permission 
                     selectVideoLauncher.launch("video/*")
                 }
             }
