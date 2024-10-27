@@ -5,7 +5,7 @@ import com.wangyiheng.vcamsx.data.models.UploadIpResponse
 import retrofit2.Response;
 import retrofit2.http.*;
 
-// 定义与后端API交互的接口
+// Define the interface that interacts with the back-end API
 interface ApiService {
     @POST("/")
     suspend fun uploadIp(@Body data: UploadIpRequest):Response<UploadIpResponse>
