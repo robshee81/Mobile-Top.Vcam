@@ -117,34 +117,34 @@ package com.wangyiheng.vcamsx.data.services
 //            "application/x-www-form-urlencoded" -> {
 //                val body = originalRequest.body()?.toString()
 //                if (body != null) {
-//                    // 解析请求体以获取键值对
+//                    // Parse the request body to obtain the key-value pair
 //                    val pairs = body.split("&").map {
 //                        val parts = it.split("=")
 //                        Pair(parts[0], parts[1])
 //                    }
-//                    // 按照键进行升序排序
+//                    // Sort in ascending order according to the keys
 //                    val sortedPairs = pairs.sortedBy { it.first }
-//                    // 拼接
+//                    // Piece together
 //                    sortedPairs.forEach { pair ->
 //                        str += "&${pair.first}=${pair.second}"
 //                    }
 //                }
 //            }
 ////            "multipart/form-data" -> {
-////                // 文件不加入签名加密，只对其他参数排序
+////                // The file does not add signature encryption, and only sorts other parameters.
 ////            }
 //        }
-//        // 获取URL中的查询字符串参数
+//        // Get the query string parameters in the URL
 //        val url = originalRequest.url()
 //        val queryParameterNames = url.queryParameterNames()
 //        val queryParams = queryParameterNames.flatMap { name ->
 //            url.queryParameterValues(name).map { value -> name to value }
 //        }
 //
-//        // 将查询参数按照键进行字典序升序排序
+//        // Sort the query parameters in ascending order according to the keys.
 //        val sortedQueryParams = queryParams.sortedBy { it.first }
 //
-//        // 拼接查询字符串参数
+//        // Splicing query string parameters
 //        sortedQueryParams.forEach { (key, value) ->
 //            str += "&$key=$value"
 //        }
